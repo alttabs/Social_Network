@@ -1,4 +1,4 @@
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+drop SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -15,7 +15,7 @@ USE `TrabalhoWeb`;
 -- Estrutura da tabela `contato`
 --
 
-CREATE TABLE `contato` (
+CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `telefone` varchar(50) NOT NULL,
@@ -23,18 +23,21 @@ CREATE TABLE `contato` (
   `cod_grupo` int(11) NOT NULL,
   `detalhes` text NOT NULL,
   `foto` text NOT NULL,
-  `cod_usuario` int(11) NOT NULL
+  `cod_usuario` int(11) NOT NULL,
+  `login` varchar(50) NOT NULL,
+  `senha` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `contato`
 --
 
-INSERT INTO `contato` (`id`, `nome`, `telefone`, `email`, `cod_grupo`, `detalhes`, `foto`, `cod_usuario`) VALUES
-(7, 'Teste Grupo 1', '99999999999', 'teste@teste.com', 5, 'testando', 'http://www.escolhalivre.com/Images/imagem_perfil.jpg', 0),
-(8, 'Zacarias', '8888888', 'zacarias@trapalhoes.com', 1, 'teste', 'http://br.web.img3.acsta.net/r_1280_720/pictures/17/01/18/17/46/268398.jpg', 0),
-(9, 'Teste Grupo 2', '222', 'teste@teste.com', 5, 'testando', '', 0),
-(10, 'Teste sessÃ£o', '8888888', 'teste@teste.com', 1, '', '', 1);
+INSERT INTO `usuario` (`id`, `nome`, `telefone`, `email`, `cod_grupo`, `detalhes`, `foto`, `cod_usuario`, `login`, `senha`) VALUES
+(1, 'Usuario Teste', '99999999999', 'teste@teste.com', 5, 'testando', 'http://www.escolhalivre.com/Images/imagem_perfil.jpg', 0, 'usertest', 'e10adc3949ba59abbe56e057f20f883e');
+INSERT INTO `usuario` (`id`, `nome`, `telefone`, `email`, `cod_grupo`, `detalhes`, `foto`, `cod_usuario`, `login`, `senha`) VALUES
+(2, 'Teste Amizade', '99999999999', 'teste2@teste.com', 5, 'testando2', 'http://www.escolhalivre.com/Images/imagem_perfil.jpg', 0, 'usertest2', 'e10adc3949ba59abbe56e057f20f883e2');
+INSERT INTO `usuario` (`id`, `nome`, `telefone`, `email`, `cod_grupo`, `detalhes`, `foto`, `cod_usuario`, `login`, `senha`) VALUES
+(3, 'Teste4', '99999999999', 'teste4@teste.com', 5, 'testando4', 'http://www.escolhalivre.com/Images/imagem_perfil.jpg', 0, 'usertest4', 'e10adc3949ba59abbe56e057f20f883e3');
 
 -- --------------------------------------------------------
 
@@ -57,26 +60,6 @@ INSERT INTO `grupo` (`id`, `nome`) VALUES
 (3, 'Trabalho'),
 (4, 'Faculdade'),
 (5, 'TESTANDO');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `usuario`
---
-
-CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL,
-  `login` varchar(50) NOT NULL,
-  `senha` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `usuario`
---
-
-INSERT INTO `usuario` (`id`, `nome`, `login`, `senha`) VALUES
-(1, 'Andre', 'andre', 'e10adc3949ba59abbe56e057f20f883e');
 
 --
 -- Indexes for dumped tables
@@ -106,12 +89,6 @@ ALTER TABLE `usuario`
 --
 
 --
--- AUTO_INCREMENT for table `contato`
---
-ALTER TABLE `contato`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
 -- AUTO_INCREMENT for table `grupo`
 --
 ALTER TABLE `grupo`
@@ -123,3 +100,51 @@ ALTER TABLE `grupo`
 ALTER TABLE `usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
+
+-- criação da tabela de amizade
+
+
+CREATE TABLE `postagem` (
+  `id` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `conteudo` varchar(100) NOT NULL  
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `postagem` ADD CONSTRAINT `id_usuario` FOREIGN KEY ( `id` ) REFERENCES `usuario` ( `id` ) ;
+
+CREATE TABLE `amizade` (
+  `id_usuario1` int(11) NOT NULL,
+  `id_usuario2` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- insert para criar postagens
+INSERT INTO `postagem` (`id`, `id_usuario`, `conteudo`) VALUES
+(1, 1, 'Conteúdo de postagem teste 1');
+
+INSERT INTO `postagem` (`id`, `id_usuario`, `conteudo`) VALUES
+(2, 1, 'Conteúdo de postagem teste 2');
+
+INSERT INTO `postagem` (`id`, `id_usuario`, `conteudo`) VALUES
+(3, 1, 'Conteúdo de postagem teste 2');
+
+select * from `postagem`;
+
+-- insert para criar amizade (passar o id dos dois amigos)
+INSERT INTO `amizade` (`id_usuario1`, `id_usuario2`) VALUES
+(1, 2);
+
+
+-- select para obter todos os amigos do usuário (só trocar o 1 pelo id do usuário)
+select * from usuario
+join amizade
+on amizade.id_usuario1 = 1 or amizade.id_usuario2 = 1
+where usuario.id in (amizade.id_usuario1, amizade.id_usuario2) and usuario.id != 1;
+
+SELECT * FROM usuario WHERE login = 'usertest' AND senha = 'e10adc3949ba59abbe56e057f20f883e';
+
+
+select * from postagem
+where id_usuario = 1;
+
+
