@@ -1,4 +1,3 @@
-drop SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -7,7 +6,7 @@ SET time_zone = "+00:00";
 -- Database: `TrabalhoWeb`
 --
 
-DROP DATABASE IF EXISTS `TrabalhoWeb`
+DROP DATABASE IF EXISTS `TrabalhoWeb`;
 CREATE DATABASE `TrabalhoWeb`;
 USE `TrabalhoWeb`;
 
@@ -17,7 +16,7 @@ USE `TrabalhoWeb`;
 --
 
 CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `nome` varchar(100) NOT NULL,
   `telefone` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -47,7 +46,7 @@ INSERT INTO `usuario` (`id`, `nome`, `telefone`, `email`, `cod_grupo`, `detalhes
 --
 
 CREATE TABLE `grupo` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `nome` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -62,32 +61,13 @@ INSERT INTO `grupo` (`id`, `nome`) VALUES
 (4, 'Faculdade'),
 (5, 'TESTANDO');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `contato`
---
-ALTER TABLE `contato`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `grupo`
---
-ALTER TABLE `grupo`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `login` (`login`);
 
---
--- AUTO_INCREMENT for dumped tables
---
 
 --
 -- AUTO_INCREMENT for table `grupo`
