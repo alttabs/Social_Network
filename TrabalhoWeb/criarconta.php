@@ -17,7 +17,7 @@
 		$foto = $_POST["foto"];
 
 		// Não preencheu algum campo obrigatório?
-		if ($nome == "" || $telefone == "" || $cod_grupo == "" ) {
+		if ($nome == "" || $telefone == "" ) {
 
 			echo "<script>
 						alert('Preencha todos os campos!');
@@ -38,7 +38,7 @@
 
 				echo "<script>
 								alert('Cadastrado com Sucesso!');
-								location.href='listar.php';
+								location.href='index.php';
 							</script>";
 
 			} else {
