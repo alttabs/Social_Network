@@ -85,50 +85,11 @@
 		</div>
 
 		<div class="form-group">
-			<label>Grupo</label>
-			<select name="cod_grupo" required class="form-control">
-				<option value="">Selecione</option>
-				<?php
-
-					// Não exibe mensagens de alerta
-					error_reporting(1);
-
-					// Conecta ao BD
-					include_once "../fixo/conexao_bd.php";
-					
-					// Cria comando SQL
-					$sql = "SELECT * 
-									FROM grupo";
-
-					// Executa no BD
-					$retorno = $conexao->query($sql);
-
-					// Deu erro?
-					if ($retorno == false) {
-						echo $conexao->error;
-					}
-
-					// Percorre todos os registros encontrados
-					while( $registro = $retorno->fetch_array() ) {
-
-						// obtém dados do registro
-						$id = $registro["id"];
-						$nome = $registro["nome"];
-
-						echo "<option value='$id'>$nome</option>";
-
-					}
-
-				?>
-			</select>
-		</div>
-
-		<div class="form-group">
 			<label>Detalhes</label>
 			<textarea name="detalhes" class="form-control"></textarea>
 		</div>
 
-		<a href="listar.php" class="btn btn-danger">Cancelar</a>
+		<a href="index.php" class="btn btn-danger">Cancelar</a>
 		<button type="submit" class="btn btn-primary">Salvar</button>
 		
 	</form>
