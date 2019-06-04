@@ -60,6 +60,7 @@ if ($_POST != NULL) {
 				<input type="text" id="login" class="fadeIn second" name="login" placeholder="E-mail">
 				<input type="text" id="password" class="fadeIn third" name="senha" placeholder="Senha">
 				<input type="submit" class="fadeIn fourth" value="Entrar">
+				<a class="underlineHover" href="criarconta.php">Cadastrar-se</a>
 			</form>
 			<div id="formFooter">
 				<a class="underlineHover" href="#">Esqueceu a senha?</a>
