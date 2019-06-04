@@ -58,7 +58,7 @@ include_once './fixo/conexao_bd.php';
 					$resultadoQuantidadeDeAmigos = $conexao->query($sqlBuscarQuantidadeDeAmigos);
 					$qtdAmigos = $resultadoQuantidadeDeAmigos->fetch_array();
 					?>
-					<li class="list-group-item"><?php echo $qtdAmigos[0] ?> Amigos</li>
+					<li class="list-group-item"><?php echo $qtdAmigos[0] ?>Amigos</li>
 				</ul>
 				<div class="card-body">
 					<a href="./fixo/sair.php" class="card-link"> Sair </a>

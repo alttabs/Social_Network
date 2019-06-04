@@ -15,9 +15,11 @@
 		$cod_grupo = $_POST["cod_grupo"];
 		$detalhes = $_POST["detalhes"];
 		$foto = $_POST["foto"];
+		$login = $_POST["login"];
+		$senha = $_POST["senha"];
 
 		// Não preencheu algum campo obrigatório?
-		if ($nome == "" || $telefone == "" ) {
+		if ($nome == "" || $telefone == "" || $login == "" || $senha == "" ) {
 
 			echo "<script>
 						alert('Preencha todos os campos!');
@@ -27,8 +29,8 @@
 		} else {
 
 			// Cria comando SQL
-			$sql = "INSERT INTO contato (nome, telefone, email, cod_grupo, detalhes, foto) 
-							VALUES ('$nome', '$telefone', '$email', '$cod_grupo', '$detalhes', '$foto')";
+			$sql = "INSERT INTO usuario (nome, telefone, email, cod_grupo, detalhes, foto, login, senha) 
+							VALUES ('$nome', '$telefone', '$email', '$cod_grupo', '$detalhes', '$foto', '$login', '$senha')";
 
 			// Executa no BD
 			$retorno = $conexao->query($sql);
@@ -87,6 +89,16 @@
 		<div class="form-group">
 			<label>Detalhes</label>
 			<textarea name="detalhes" class="form-control"></textarea>
+		</div>
+
+		<div class="form-group">
+			<label>Login</label>
+			<textarea name="login" class="form-control"></textarea>
+		</div>
+
+		<div class="form-group">
+			<label>Senha</label>
+			<input type="password" name="senha" class="form-control"></textarea>
 		</div>
 
 		<a href="index.php" class="btn btn-danger">Cancelar</a>
