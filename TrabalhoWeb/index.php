@@ -14,8 +14,10 @@ if ($_POST != NULL) {
 
 	// $sql = " SELECT * FROM usuario WHERE login = '$login' AND senha = '$senha' ";
 	$sql = " SELECT * FROM usuario WHERE login = '$login'";
+	
 	$res = $conexao->query($sql);
 	$registro = $res->fetch_array();
+	
 	if ($registro) {
 		$_SESSION["logado"] = "true";
 		$_SESSION["nome"] = $registro["nome"];

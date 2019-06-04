@@ -1,15 +1,5 @@
--- insert para criar postagens
-INSERT INTO `postagem` (`id_usuario`, `conteudo`, `data`) 
-VALUES (2, 'Conteúdo de postagem teste 1', '2011-12-18 13:17:17');
 
-INSERT INTO `postagem` (`id_usuario`, `conteudo`, `data`) VALUES
-(1, 'Conteúdo de postagem teste 2', '2019-05-30 13:25:00');
 
-INSERT INTO `postagem` (`id_usuario`, `conteudo`, `data`) VALUES
-(3, 'Conteúdo de postagem teste 6', '2019-06-01 13:25:00');
-
-INSERT INTO `postagem` (`id_usuario`, `conteudo`, `data`) VALUES
-(2, 'Post do amigo de id 2', CURDATE());
 
 -- insert para criar amizade (passar o id dos dois amigos)
 INSERT INTO `amizade` (`id_usuario1`, `id_usuario2`) VALUES
