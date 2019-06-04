@@ -17,6 +17,7 @@
 		$foto = $_POST["foto"];
 		$login = $_POST["login"];
 		$senha = $_POST["senha"];
+		$senha = md5($senha);
 
 		// Não preencheu algum campo obrigatório?
 		if ($nome == "" || $telefone == "" || $login == "" || $senha == "" ) {
