@@ -1,4 +1,3 @@
-drop SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -6,31 +5,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `TrabalhoWeb`
 --
-
-DROP DATABASE IF EXISTS `TrabalhoWeb`
+DROP DATABASE IF EXISTS `TrabalhoWeb`;
 CREATE DATABASE `TrabalhoWeb`;
 USE `TrabalhoWeb`;
 
 
---
--- Estrutura da tabela `contato`
---
-
+-- Estrutura da tabela `usuario`
 CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY auto_increment,
   `nome` varchar(100) NOT NULL,
   `telefone` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `cod_grupo` int(11) NOT NULL,
   `detalhes` text NOT NULL,
   `foto` text NOT NULL,
-  `cod_usuario` int(11) NOT NULL,
-  `login` varchar(50) NOT NULL,
+  `login` varchar(50) NOT NULL UNIQUE,
   `senha` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `contato`
+-- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `nome`, `telefone`, `email`, `cod_grupo`, `detalhes`, `foto`, `cod_usuario`, `login`, `senha`) VALUES
@@ -42,12 +36,10 @@ INSERT INTO `usuario` (`id`, `nome`, `telefone`, `email`, `cod_grupo`, `detalhes
 
 -- --------------------------------------------------------
 
---
--- Estrutura da tabela `grupo`
---
 
+-- Estrutura da tabela `grupo`
 CREATE TABLE `grupo` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY auto_increment,
   `nome` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -62,32 +54,13 @@ INSERT INTO `grupo` (`id`, `nome`) VALUES
 (4, 'Faculdade'),
 (5, 'TESTANDO');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `contato`
---
-ALTER TABLE `contato`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `grupo`
---
-ALTER TABLE `grupo`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `login` (`login`);
 
---
--- AUTO_INCREMENT for dumped tables
---
 
 --
 -- AUTO_INCREMENT for table `grupo`

@@ -1,9 +1,8 @@
-drop SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
---DROP TABLE 'TrabalhoWeb';
+DROP DATABASE IF EXISTS `TrabalhoWeb`;
 CREATE DATABASE `TrabalhoWeb`;
 USE `TrabalhoWeb`;
 
