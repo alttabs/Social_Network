@@ -64,7 +64,7 @@ if ($_POST != NULL) {
 				<input type="submit" class="fadeIn fourth" value="Entrar">
 			</form>
 			<div id="formFooter">
-				<a class="underlineHover" href="#">Esqueceu a senha?</a>
+				<a class="underlineHover" href="#">Esqueceu a senha? </a>
 				<br>
 				<a class="underlineHover" href="criarconta.php"> Cadastrar-se </a>
 			</div>
