@@ -20,7 +20,7 @@
 		$senha = md5($senha);
 
 		// Não preencheu algum campo obrigatório?
-		if ($nome == "" || $telefone == "" || $login == "" || $senha == "" ) {
+		if ($nome == "" || $telefone == "" ) {
 
 			echo "<script>
 						alert('Preencha todos os campos!');
@@ -30,8 +30,8 @@
 		} else {
 
 			// Cria comando SQL
-			$sql = "INSERT INTO usuario (nome, telefone, email, cod_grupo, detalhes, foto, login, senha) 
-							VALUES ('$nome', '$telefone', '$email', '$cod_grupo', '$detalhes', '$foto', '$login', '$senha')";
+			$sql = "INSERT INTO contato (nome, telefone, email, cod_grupo, detalhes, foto) 
+							VALUES ('$nome', '$telefone', '$email', '$cod_grupo', '$detalhes', '$foto')";
 
 			// Executa no BD
 			$retorno = $conexao->query($sql);
@@ -90,16 +90,6 @@
 		<div class="form-group">
 			<label>Detalhes</label>
 			<textarea name="detalhes" class="form-control"></textarea>
-		</div>
-
-		<div class="form-group">
-			<label>Login</label>
-			<textarea name="login" class="form-control"></textarea>
-		</div>
-
-		<div class="form-group">
-			<label>Senha</label>
-			<input type="password" name="senha" class="form-control"></textarea>
 		</div>
 
 		<a href="index.php" class="btn btn-danger">Cancelar</a>

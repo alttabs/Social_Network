@@ -65,7 +65,12 @@ if ($_POST != NULL) {
 			</form>
 			<div id="formFooter">
 				<a class="underlineHover" href="#">Esqueceu a senha?</a>
+<<<<<<< HEAD
 				<a class="underlineHover" href="criarconta.php">Cadastrar-se</a>
+=======
+				<br>
+				<a class="underlineHover" href="criarconta.php"> Cadastrar-se </a>
+>>>>>>> 5f1ae3ea5aa9f1599e067450d5fc4b22fc5b2b87
 			</div>
 		</div>
 	</div>
