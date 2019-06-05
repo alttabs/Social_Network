@@ -2,7 +2,9 @@
 session_start();
 
 if ($_SESSION["logado"] != "true") {
+
 	header("location: index.php");
+
 } else {
 	include_once "./fixo/conexao_bd.php";
 
@@ -54,9 +56,14 @@ include_once './fixo/conexao_bd.php';
 				</div>
 				<ul class="list-group list-group-flush">
 					<?php
-					$sqlBuscarQuantidadeDeAmigos = "SELECT COUNT(*) FROM amizade WHERE amizade.id_usuario1 = $id OR amizade.id_usuario2 = $id";
+
+					$sqlBuscarQuantidadeDeAmigos = "SELECT COUNT(*) FROM amizade 
+					WHERE amizade.id_usuario1 = $id 
+					OR amizade.id_usuario2 = $id";
+
 					$resultadoQuantidadeDeAmigos = $conexao->query($sqlBuscarQuantidadeDeAmigos);
 					$qtdAmigos = $resultadoQuantidadeDeAmigos->fetch_array();
+
 					?>
 					<li class="list-group-item"><?php echo $qtdAmigos[0] ?> Amigos</li>
 				</ul>
@@ -73,7 +80,10 @@ include_once './fixo/conexao_bd.php';
 
 				$postagem = $_POST['postagem'];
 				$datahora = date('Y-m-d H:i:s');
-				$sqlRealizaPost = " INSERT INTO postagem (id_usuario, conteudo, data) VALUES ('$id', '$postagem', now()) ";
+
+				$sqlRealizaPost = " INSERT INTO postagem (id_usuario, conteudo, data) 
+				VALUES ('$id', '$postagem', now()) ";
+
 				$res = $conexao->query($sqlRealizaPost);
 
 				if ($res) {
@@ -123,7 +133,7 @@ include_once './fixo/conexao_bd.php';
 					<h6 class='card-subtitle mb-2 text-muted'>$dataDoPost</h6>
 					</div>
 					<p class='card-text'>$conteudoDoPost</p>
-					<a href='#' class='card-link' id='btn_curtir'> Curtir</a>
+      				<a href='curtida.php?id=$idPost&id_usuario=$idUsuarioDoPost'><button type='button' class='w3-button w3-theme-d1 w3-margin-bottom'><i class='fa fa-thumbs-up'></i> Curtir</button></a> 
 					<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>
   						Comentários
 					</button>
@@ -142,7 +152,10 @@ include_once './fixo/conexao_bd.php';
 						</div>
 						<div class='modal-body'>
 						";
-					$sqlComentariosDoPost = " SELECT * FROM comentario JOIN usuario ON usuario.id = comentario.id_usuario_coment WHERE comentario.id_postagem_coment = $idPost ";
+					$sqlComentariosDoPost = " SELECT * FROM comentario JOIN usuario
+					 ON usuario.id = comentario.id_usuario_coment
+					  WHERE comentario.id_postagem_coment = $idPost ";
+
 					$resComentarios = $conexao->query($sqlComentariosDoPost);;
 
 					while ($comentario = $resComentarios->fetch_array()) {
