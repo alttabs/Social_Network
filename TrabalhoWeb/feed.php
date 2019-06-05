@@ -21,7 +21,7 @@ if ($_SESSION["logado"] != "true") {
 		echo $res;
 
 		echo "<script>
-			alert('Comentário realizado com sucesso!');
+			alert('Postagem realizada com sucesso!');
 		</script>";
 	}
 }
