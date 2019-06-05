@@ -81,21 +81,19 @@ include_once './fixo/conexao_bd.php';
 				}
 			}
 			?>
-
-			<div class="col-md-9">
-				<div class="card card-fazer-postagem">
-					<div class="card-body">
-						<div class="input-group mb-3">
-							<form method="POST">
+<div class="col-md-9">
+				<form method="POST">
+					<div style="height:500px" class="card card-fazer-postagem">
+						<div class="card-body">
+							<div class="input-group mb-3">
 								<input type="text" name="postagem" class="form-control" placeholder="O que você está pensando? (falta de criatividade kaka)" aria-label="Recipient's username" aria-describedby="button-addon2">
 								<div class="input-group-append">
 									<button class="btn btn-outline-secondary" type="submit" id="button-addon2">Postar</button>
 								</div>
-							</form>
+							</div>
 						</div>
-					</div>
-				</div>
-
+				</form>
+			</div>
 				<?php
 
 				$sql = " SELECT DISTINCT * FROM postagem, amizade
