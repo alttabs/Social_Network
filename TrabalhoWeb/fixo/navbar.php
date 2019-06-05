@@ -29,6 +29,9 @@ if ($_SESSION["logado"] != "true") {
 			<li class="nav-item">
 				<a class="nav-link" href="./solicitacoes_amizade.php">Solicitações de Amizade</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="./amigos.php">Amigos</a>
+			</li>
 		
 				<li class="nav-item">
 				<a class="nav-link" href="./fixo/logout.php">Sair</a>
