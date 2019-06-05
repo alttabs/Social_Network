@@ -7,9 +7,9 @@ else {
     include_once "./fixo/conexao_bd.php";
     $idUsuarioLogado = $_SESSION["id"];
 
-    $sqlListaAmigos = " SELECT * FROM amizade 
-    JOIN usuario ON usuario.id = amizade.id_usuario2
-    where amizade.id_usuario1 = $idUsuarioLogado ";
+    $sqlListaAmigos = " SELECT distinct * FROM amizade 
+    JOIN usuario ON usuario.id = amizade.id_usuario2 or usuario.id = amizade.id_usuario1 
+    where amizade.id_usuario1 = $idUsuarioLogado or amizade.id_usuario2 = $idUsuarioLogado";
 
     $res = $conexao->query($sqlListaAmigos);
 

@@ -48,7 +48,7 @@ include_once './fixo/conexao_bd.php';
 
 	<div class="container conteudo">
 		<div class="row">
-			<div class="card col-md-3" style="width: 18rem;">
+			<div class="card col-md-3" style="height: 500px;">
 				<img src="<?php echo $foto ?>" class="card-img-top foto-perfil" alt="...">
 				<div class="card-body">
 					<h5 class="card-title"><?php echo $nome ?></h5>
@@ -93,10 +93,10 @@ include_once './fixo/conexao_bd.php';
 			?>
 			<div class="col-md-9">
 				<form method="POST">
-					<div style="height:500px" class="card card-fazer-postagem">
+					<div class="card card-fazer-postagem">
 						<div class="card-body">
 							<div class="input-group mb-3">
-								<input type="text" name="postagem" class="form-control" placeholder="O que você está pensando? (falta de criatividade kaka)" aria-label="Recipient's username" aria-describedby="button-addon2">
+								<input type="text" name="postagem" class="form-control" placeholder="O que você está codando hoje?" aria-label="Recipient's username" aria-describedby="button-addon2">
 								<div class="input-group-append">
 									<button class="btn btn-outline-secondary" type="submit" id="button-addon2">Postar</button>
 								</div>
@@ -123,6 +123,9 @@ include_once './fixo/conexao_bd.php';
 					$nomeAutor = $usuario["nome"];
 					$fotoAutor = $usuario["foto"];
 
+					$quantidadeCurtidasPost = "SELECT count(*) FROM curtida WHERE curtida.id_postagem_curtida = $idPost";
+					$qtdcurtidas = $conexao->query($quantidadeCurtidasPost);
+					$qtd = $qtdcurtidas->fetch_array();
 					echo "
 					<div class='card card-postagem'>
 					<div class='card-body'>
@@ -132,6 +135,7 @@ include_once './fixo/conexao_bd.php';
 					<h6 class='card-subtitle mb-2 text-muted'>$dataDoPost</h6>
 					</div>
 					<p class='card-text'>$conteudoDoPost</p>
+					<p>$qtd[0]</p>
       				<a href='curtida.php?id=$idPost&id_usuario=$idUsuarioDoPost'><button type='button' class='w3-button w3-theme-d1 w3-margin-bottom'><i class='fa fa-thumbs-up'></i> Curtir</button></a> 
 					<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>
   						Comentários

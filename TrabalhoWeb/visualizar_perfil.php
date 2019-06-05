@@ -43,7 +43,7 @@ include_once './fixo/conexao_bd.php';
 
 	<div class="container conteudo">
 		<div class="row">
-			<div class="card col-md-3" style="width: 18rem;">
+			<div class="card col-md-3" style="height: 500px;">
 				<img src="<?php echo $fotoUsuario ?>" class="card-img-top foto-perfil" alt="...">
 				<div class="card-body">
 					<h5 class="card-title"><?php echo $nomeUsuario ?></h5>
@@ -83,9 +83,7 @@ include_once './fixo/conexao_bd.php';
 			<div class="col-md-9">
 				<?php
 
-				$sql = " SELECT DISTINCT * FROM postagem, amizade
-				WHERE ((postagem.id_usuario = amizade.id_usuario1 OR postagem.id_usuario = amizade.id_usuario2) 
-					AND (amizade.id_usuario1 = $idUsuario OR amizade.id_usuario2 = $idUsuario)) ORDER BY data DESC ";
+				$sql = " SELECT DISTINCT * FROM postagem WHERE id_usuario = $idUsuario";
 
 				$res = $conexao->query($sql);
 
@@ -101,6 +99,10 @@ include_once './fixo/conexao_bd.php';
 					$nomeAutor = $usuario["nome"];
 					$fotoAutor = $usuario["foto"];
 
+					$quantidadeCurtidasPost = "SELECT count(*) FROM curtida WHERE curtida.id_postagem_curtida = $idPost";
+					$qtdcurtidas = $conexao->query($quantidadeCurtidasPost);
+					$qtd = $qtdcurtidas->fetch_array();
+
 
 					echo "
 					<div class='card card-postagem'>
@@ -113,7 +115,8 @@ include_once './fixo/conexao_bd.php';
 					<h6 class='card-subtitle mb-2 text-muted'>$dataDoPost</h6>
 					</div>
 					<p class='card-text'>$conteudoDoPost</p>
-					<a href='#' class='card-link' id='btn_curtir'> Curtir</a>
+					<p>$qtd[0]</p>
+					<a href='curtida.php?id=$idPost&id_usuario=$idUsuarioDoPost' class='card-link' id='btn_curtir'> Curtir</a>
 					<a href='#' class='card-link'> Comentar</a>
 					</div>
 					</div>

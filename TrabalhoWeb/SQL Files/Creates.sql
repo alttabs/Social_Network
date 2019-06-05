@@ -33,6 +33,7 @@ CREATE TABLE `postagem` (
   `id` int(11) NOT NULL PRIMARY KEY auto_increment,
   `id_usuario` int(11) NOT NULL,
   `conteudo` varchar(100) NOT NULL ,
+  `foto` text NOT NULL,
   `data` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
