@@ -81,7 +81,7 @@ include_once './fixo/conexao_bd.php';
 				}
 			}
 			?>
-<div class="col-md-9">
+			<div class="col-md-9">
 				<form method="POST">
 					<div style="height:500px" class="card card-fazer-postagem">
 						<div class="card-body">
