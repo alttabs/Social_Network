@@ -1,13 +1,10 @@
 <?php
 	// Não exibe mensagens de alerta
 	error_reporting(1);
-
 	// Clicou em enviar?
 	if ($_POST != NULL) {
-
 		// Conecta ao BD
 		include_once "./fixo/conexao_bd.php";
-
 		// Obtém dados do formulário
 		$nome = $_POST["nome"];
 		$telefone = $_POST["telefone"];
@@ -18,46 +15,32 @@
 		$login = $_POST["login"];
 		$senha = $_POST["senha"];
 		$senha = md5($senha);
-
 		// Não preencheu algum campo obrigatório?
-		if ($nome == "" || $telefone == "" ) {
-
+		if ($nome == "" || $telefone == "" || $login == "" || $senha == "" ) {
 			echo "<script>
 						alert('Preencha todos os campos!');
 					</script>";
-
 		// Tudo ok.. pode cadastrar no BD
 		} else {
-
 			// Cria comando SQL
-			$sql = "INSERT INTO contato (nome, telefone, email, cod_grupo, detalhes, foto) 
-							VALUES ('$nome', '$telefone', '$email', '$cod_grupo', '$detalhes', '$foto')";
-
+			$sql = "INSERT INTO usuario (nome, telefone, email, cod_grupo, detalhes, foto, login, senha) 
+							VALUES ('$nome', '$telefone', '$email', '$cod_grupo', '$detalhes', '$foto', '$login', '$senha')";
 			// Executa no BD
 			$retorno = $conexao->query($sql);
-
 			// Executou no BD?
 			if ($retorno == true) {
-
 				echo "<script>
 								alert('Cadastrado com Sucesso!');
 								location.href='index.php';
 							</script>";
-
 			} else {
-
 				echo "<script>
 								alert('Erro ao Cadastrar!');
 							</script>";
-
 				echo $conexao->error;
-
 			}
-
 		}
-
 	}
-
 ?>
 
 <?php include_once "./fixo/topo.php"; ?>
@@ -90,6 +73,16 @@
 		<div class="form-group">
 			<label>Detalhes</label>
 			<textarea name="detalhes" class="form-control"></textarea>
+		</div>
+
+		<div class="form-group">
+			<label>Login</label>
+			<textarea name="login" class="form-control"></textarea>
+		</div>
+
+		<div class="form-group">
+			<label>Senha</label>
+			<input type="password" name="senha" class="form-control"></textarea>
 		</div>
 
 		<a href="index.php" class="btn btn-danger">Cancelar</a>
