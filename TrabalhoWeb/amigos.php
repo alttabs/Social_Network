@@ -47,6 +47,7 @@ include_once './fixo/conexao_bd.php';
 					<div class='header-postagem'>
 					<img src='$fotoUsuario' class='card-img-top imagem-card' alt='...'>
                     <h5 class='card-title titulo-postagem'>$nomeUsuario</h5>
+                    <a onclick=\"return confirm('Deseja apagar?');\" title='Desfazer amizade' class='btn btn-danger' href='./fixo/desfazerAmizade.php?idUsuario=$idUsuario'><i class='fas fa-trash-alt'></i></a>
 					</div>		
                     </div>
                     </div>
