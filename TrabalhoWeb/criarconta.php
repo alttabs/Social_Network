@@ -82,7 +82,7 @@
 
 		<div class="form-group">
 			<label>Senha</label>
-			<input type="password" name="senha" class="form-control"></textarea>
+			<input type="password" name="senha" class="form-control">
 		</div>
 
 		<a href="index.php" class="btn btn-danger">Cancelar</a>
