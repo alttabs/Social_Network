@@ -105,7 +105,6 @@ include_once './fixo/conexao_bd.php';
 				</form>
 			</div>
 				<?php
-
 				$sql = " SELECT DISTINCT * FROM postagem, amizade
 				WHERE ((postagem.id_usuario = amizade.id_usuario1 OR postagem.id_usuario = amizade.id_usuario2) 
 					AND (amizade.id_usuario1 = $id OR amizade.id_usuario2 = $id)) ORDER BY data DESC ";
