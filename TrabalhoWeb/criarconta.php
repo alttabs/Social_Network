@@ -77,7 +77,7 @@
 
 		<div class="form-group">
 			<label>Login</label>
-			<textarea name="login" class="form-control"></textarea>
+			<input type="text" name="login" class="form-control"></textarea>
 		</div>
 
 		<div class="form-group">
