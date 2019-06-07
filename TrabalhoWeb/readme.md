@@ -9,5 +9,5 @@ SQL
 
 There's what its looks like:
 
-[!index](index.png)
-[!feed](feed.png)
+![index](index.png)
+![feed](feed.png)
